@@ -70,8 +70,8 @@ Run the HTML.
 
 ## Screenshots
 
-![App Screenshot](https://im.ge/i/image.OEgnWa)
-
+<img src="/example1.PNG" alt="ex2"/>
+<img src="/example2.PNG" alt="ex2"/>
 
 ## References:
 
