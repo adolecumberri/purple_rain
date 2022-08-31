@@ -1,24 +1,26 @@
+
 function createRainOnCanvas({
     canvas,
     backgroundColor = '#151515',
     dropColor = '#ba55d3'
 }) {
-    let bgColor = backgroundColor
-    let rainDropColor = dropColor
+    let bgColor = backgroundColor //background Color
+    let rainDropColor = dropColor // rainDrop Color
 
     canvas.style.backgroundColor = bgColor // this prevents the canvas to blink while being resized
+
     let canvasHeight = canvas.offsetHeight;
     let canvasWidth = canvas.offsetWidth;
     let ctx = canvas.getContext('2d');
 
     let drops = [];
 
-    const fallRate = 0.8; //speed
-    const maxDropHeight = 6; // drop size (it's a line)
-    const maxDropWidth = 2; // drop weight 
-    const maxDropDepth = 20; // drop depth will make variations between size and weight
-    const momentumGain = 0.05; // aceleration
-    const zdepthMomentumModifier = 0.05;//speed modifier. //0.45 will be much faster.
+    let fallRate = 0.8; //speed
+    let maxDropHeight = 6; // drop size (it's a line)
+    let maxDropWidth = 2; // drop weight 
+    let maxDropDepth = 20; // drop depth will make variations between size and weight
+    let momentumGain = 0.05; // aceleration
+    let zdepthMomentumModifier = 0.05;//speed modifier. //0.45 will be much faster.
     let windSpeed = 0;
 
     class Drop {
@@ -79,9 +81,26 @@ function createRainOnCanvas({
     };
 
     const updateColor = ({ dropColor = rainDropColor, backgroundColor = bgColor }) => {
-        console.log("entro")
-         rainDropColor = dropColor
+        rainDropColor = dropColor
         bgColor = backgroundColor
+    }
+
+    const updateStats = ({
+        newFallRate = fallRate,
+        newMaxDropHeight = maxDropHeight,
+        newMaxDropWidth = maxDropWidth,
+        newMaxDropDepth = maxDropDepth,
+        newMomentumGain = momentumGain,
+        newZdepthMomentumModifier = zdepthMomentumModifier,
+        newWindSpeed = windSpeed
+    }) => {
+        fallRate = newFallRate
+        maxDropHeight = newMaxDropHeight
+        maxDropWidth = newMaxDropWidth
+        maxDropDepth = newMaxDropDepth
+        momentumGain = newMomentumGain
+        zdepthMomentumModifier = newZdepthMomentumModifier
+        windSpeed = newWindSpeed
     }
 
     //canvas size update.
@@ -123,6 +142,7 @@ function createRainOnCanvas({
 
 
     return {
-        updateColor
+        updateColor,
+        updateStats
     }
 }
